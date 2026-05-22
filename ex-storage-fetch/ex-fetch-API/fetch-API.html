@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="name"></h1>
+    <img class="image" />
+  </body>
+  <script>
+    const dominio = 'https://ringsdb.com/';
+    const h1 = document.querySelector('.name');
+    const img = document.querySelector('.image');
+    function getCard() {
+      return fetch('https://ringsdb.com/api/public/card/01008.json')
+        .then((response) => response.json())
+        .then((data) => {
+          return data;
+        });
+    }
+
+    getCard().then((data) => {
+      h1.innerText = data.name;
+      img.src = dominio + data.imagesrc;
+    });
+  </script>
+</html>

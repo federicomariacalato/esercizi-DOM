@@ -1,0 +1,68 @@
+<!-- Lo scopo di questo task è di salvare tutti i dati di un form nel session storage. -Fai in modo che nello span venga inserito il testo che si è inserito nell'input nome -Fai in modo che questi dati si salvino nel session storage -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        max-width: 300px;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Il form di <span class="title-name"></span></h1>
+    <div class="form">
+      <label for="email">Email</label>
+      <input type="email" name="email" class="email" placeholder="email" />
+      <label for="firstname">Name</label>
+      <input
+        type="text"
+        name="firstname"
+        class="firstname"
+        placeholder="firstname"
+      />
+      <label for="lastname">Surname</label>
+      <input
+        type="text"
+        name="lastname"
+        class="lastname"
+        placeholder="lastname"
+      />
+    </div>
+    <button class="btn">Salva</button>
+    <p class="printedform"></p>
+    <script>
+      //....
+      let span = document.querySelector(".title-name");
+      let email = document.querySelector(".email");
+      let firstname = document.querySelector(".firstname");
+      let lastname = document.querySelector(".lastname");
+      let btn = document.querySelector(".btn");
+      function setFirstname(name) {
+        span.innerText = name;
+      }
+      btn.addEventListener("click", () => {
+        let emailValue = email.value;
+        let firstnameValue = firstname.value;
+        let lastnameValue = lastname.value;
+        sessionStorage.setItem("email", emailValue);
+        sessionStorage.setItem("firstname", firstnameValue);
+        sessionStorage.setItem("lastname", lastnameValue);
+        setFirstname(firstnameValue);
+      });
+    </script>
+  </body>
+</html>
